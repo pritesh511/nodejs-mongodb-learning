@@ -7,3 +7,7 @@ exports.createTodo = async (todo) => {
 exports.getAllTodos = async () => {
   return await todoModel.find();
 };
+
+exports.deleteTodo = async (id) => {
+  return await todoModel.findByIdAndDelete(id);
+};
