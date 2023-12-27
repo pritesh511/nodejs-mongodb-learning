@@ -11,8 +11,11 @@ const Home = () => {
           </Link>
         </li>
         <li className="mx-12">
-          <Link href="/todo" className="p-4 rounded-lg underline bg-orange-700">
-            Blog Admin
+          <Link
+            href="/productadmin"
+            className="p-4 rounded-lg underline bg-orange-700"
+          >
+            Product Admin
           </Link>
         </li>
         <li className="mx-12">

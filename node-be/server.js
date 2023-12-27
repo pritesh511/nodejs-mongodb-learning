@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const todoRouter = require("./routes/todo.route");
+const productRouter = require("./routes/product.route");
 
 app.use(express.json());
 app.use(cors());
@@ -19,3 +20,5 @@ mongoose
   .catch((error) => console.log(error));
 
 app.use("/todo", todoRouter);
+
+app.use("/product", productRouter);
