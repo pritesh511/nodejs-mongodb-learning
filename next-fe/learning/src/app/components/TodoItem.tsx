@@ -1,7 +1,21 @@
+import { API_URL, DELETE } from "@/constant";
 import React from "react";
 
 const TodoItem = (props: any) => {
-  const { todo } = props;
+  const { todo, getAllTodos } = props;
+
+  async function deleteTodo(id: string) {
+    const createTodo = await fetch(API_URL + `/todo?id=${id}`, {
+      method: DELETE,
+      headers: {
+        "content-Type": "application/json",
+      },
+    });
+    const createTodoResp = await createTodo.json();
+    console.log(createTodoResp);
+    getAllTodos();
+  }
+
   return (
     <li className="rounded-lg my-2 px-4 py-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-between">
       <div className="inline-flex items-center">
@@ -42,6 +56,7 @@ const TodoItem = (props: any) => {
       </div>
       <button
         type="button"
+        onClick={() => deleteTodo(todo?._id)}
         className="w-20 rounded-lg py-2 text-gray-50 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."
       >
         Delete
