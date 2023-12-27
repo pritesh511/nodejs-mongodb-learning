@@ -24,7 +24,8 @@ const Todo = () => {
     }
   }
 
-  async function createTodo() {
+  async function createTodo(event: any) {
+    event.preventDefault();
     if (todoTitle != "") {
       const body = {
         title: todoTitle,
@@ -46,26 +47,37 @@ const Todo = () => {
     }
   }
 
+  function onKeyDownHandler(e: any) {
+    if (e.keyCode === 13) {
+      createTodo(e);
+    }
+  }
+
   return (
     <div className="w-full h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
       <div className="max-w-[1000px] mx-auto px-4 h-full">
-        <div className="flex gap-3 pt-6">
-          <input
-            onChange={(e) => {
-              setTodoTitle(e.target.value);
-              setTodoTitleError(false);
-            }}
-            value={todoTitle}
-            placeholder="Please Enter Todo Title"
-            className="p-3 rounded-lg w-full border-2 border-pink-500/100 focus:outline-none"
-          />
-          <button
-            type="button"
-            onClick={() => createTodo()}
-            className=" w-20 rounded-lg text-gray-50 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."
+        <div className="pt-6">
+          <form
+            onKeyDown={onKeyDownHandler}
+            onSubmit={(e) => createTodo(e)}
+            className="flex gap-3 "
           >
-            Add
-          </button>
+            <input
+              onChange={(e) => {
+                setTodoTitle(e.target.value);
+                setTodoTitleError(false);
+              }}
+              value={todoTitle}
+              placeholder="Please Enter Todo Title"
+              className="p-3 rounded-lg w-full border-2 border-pink-500/100 focus:outline-none"
+            />
+            <button
+              type="submit"
+              className=" w-20 rounded-lg text-gray-50 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."
+            >
+              Add
+            </button>
+          </form>
         </div>
         {todoTitleError && (
           <span className="text-red-900">Please Enter todo title</span>
