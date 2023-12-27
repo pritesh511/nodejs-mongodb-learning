@@ -1,10 +1,75 @@
-import React from "react";
+"use client";
+import { API_URL, POST } from "@/constant";
+import React, { useState } from "react";
 
 const BlogAdmin = () => {
+  const [productForm, setProductForm] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    discount: 0,
+    image: "",
+  });
+
+  function handleProductFormInput(e: React.ChangeEvent<HTMLInputElement>) {
+    switch (e.target.name) {
+      case "name":
+        setProductForm({
+          ...productForm,
+          name: e.target.value,
+        });
+        break;
+      case "description":
+        setProductForm({
+          ...productForm,
+          description: e.target.value,
+        });
+        break;
+      case "price":
+        setProductForm({
+          ...productForm,
+          price: Number(e.target.value),
+        });
+        break;
+      case "discount":
+        setProductForm({
+          ...productForm,
+          discount: Number(e.target.value),
+        });
+        break;
+      case "image":
+        setProductForm({
+          ...productForm,
+          image: e.target.value,
+        });
+        break;
+    }
+  }
+
+  async function handleProductFormSubmit(e: any) {
+    e.preventDefault();
+    const createProduct = await fetch(API_URL + "/product", {
+      method: POST,
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(productForm),
+    });
+    const response = await createProduct.json();
+    console.log(response);
+    setProductForm({
+      name: "",
+      description: "",
+      price: 0,
+      discount: 0,
+      image: "",
+    });
+  }
+
   return (
     <div className="bg-gray-900 w-full h-screen flex items-center justify-center">
       <div className="max-w-[400px] w-full px-4">
-        <form className="w-full mx-auto">
+        <form className="w-full mx-auto" onSubmit={handleProductFormSubmit}>
           <div className="mb-5">
             <label
               htmlFor="text"
@@ -15,9 +80,10 @@ const BlogAdmin = () => {
             <input
               type="text"
               id="name"
+              name="name"
+              onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product name"
-              required
             />
           </div>
           <div className="mb-5">
@@ -29,7 +95,9 @@ const BlogAdmin = () => {
             </label>
             <input
               type="text"
-              id="large-input"
+              id="description"
+              name="description"
+              onChange={handleProductFormInput}
               placeholder="Enter product description"
               className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
@@ -44,9 +112,10 @@ const BlogAdmin = () => {
             <input
               type="number"
               id="price"
+              name="price"
+              onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product price"
-              required
             />
           </div>
           <div className="mb-5">
@@ -59,9 +128,10 @@ const BlogAdmin = () => {
             <input
               type="number"
               id="discount"
+              name="discount"
+              onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product discount"
-              required
             />
           </div>
           <div className="mb-5">
@@ -74,9 +144,10 @@ const BlogAdmin = () => {
             <input
               type="text"
               id="image"
+              name="image"
+              onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product image URL"
-              required
             />
           </div>
           <button
