@@ -19,7 +19,10 @@ const Home = () => {
           </Link>
         </li>
         <li className="mx-12">
-          <Link href="/todo" className="p-4 rounded-lg underline bg-orange-700">
+          <Link
+            href="/productlisting"
+            className="p-4 rounded-lg underline bg-orange-700"
+          >
             Blog
           </Link>
         </li>

@@ -12,3 +12,13 @@ export interface todoItem {
   updatedAt: string;
   __v: 0;
 }
+
+export interface productItem {
+  name: string;
+  description: string;
+  price: number;
+  discount: number;
+  image: string;
+  _id: string;
+  __v: 0;
+}

@@ -80,7 +80,7 @@ const TodoItem = (props: any) => {
       <button
         type="button"
         onClick={() => deleteTodo(todo?._id)}
-        className="w-20 rounded-lg py-2 text-gray-50 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."
+        className="w-20 rounded-lg py-2 text-gray-50 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
       >
         Delete
       </button>

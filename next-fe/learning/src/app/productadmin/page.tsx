@@ -1,5 +1,6 @@
 "use client";
 import { API_URL, POST } from "@/constant";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const BlogAdmin = () => {
@@ -157,6 +158,12 @@ const BlogAdmin = () => {
             Submit
           </button>
         </form>
+        <Link
+          href="/productlisting"
+          className="block underline my-4 text-sm font-medium text-white"
+        >
+          Go to the product list page
+        </Link>
       </div>
     </div>
   );

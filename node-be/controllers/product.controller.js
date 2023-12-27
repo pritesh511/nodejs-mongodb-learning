@@ -10,3 +10,12 @@ exports.createProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.getAllProduct = async (_req, res) => {
+  try {
+    const productList = await productService.getAllProduct();
+    res.status(200).json({ data: productList });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
