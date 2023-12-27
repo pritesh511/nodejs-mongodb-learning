@@ -1,4 +1,4 @@
-import { API_URL, DELETE } from "@/constant";
+import { API_URL, DELETE, PUT, todoItem } from "@/constant";
 import React from "react";
 
 const TodoItem = (props: any) => {
@@ -16,6 +16,23 @@ const TodoItem = (props: any) => {
     getAllTodos();
   }
 
+  const handleCheckboxChange = async (todo: todoItem) => {
+    const body = {
+      title: todo?.title,
+      iscompleted: todo?.iscompleted ? false : true,
+    };
+    const createTodo = await fetch(API_URL + `/todo?id=${todo?._id}`, {
+      method: PUT,
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const createTodoResp = await createTodo.json();
+    console.log(createTodoResp);
+    getAllTodos();
+  };
+
   return (
     <li className="rounded-lg my-2 px-4 py-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-between">
       <div className="inline-flex items-center">
@@ -24,6 +41,8 @@ const TodoItem = (props: any) => {
           htmlFor={todo?._id}
         >
           <input
+            onChange={() => handleCheckboxChange(todo)}
+            checked={todo?.iscompleted}
             type="checkbox"
             className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
             id={todo?._id}
@@ -49,7 +68,11 @@ const TodoItem = (props: any) => {
           className="mt-px font-light text-gray-700 cursor-pointer select-none"
           htmlFor={todo?._id}
         >
-          <p className="flex font-sans text-base antialiased font-medium leading-relaxed text-gray-50">
+          <p
+            className={`flex font-sans text-base antialiased font-medium leading-relaxed text-gray-50 ${
+              todo?.iscompleted && "line-through"
+            }`}
+          >
             {todo?.title}
           </p>
         </label>

@@ -70,7 +70,7 @@ const Todo = () => {
         {todoTitleError && (
           <span className="text-red-900">Please Enter todo title</span>
         )}
-        <ul className="mt-4">
+        <ul className="mt-4 h-[calc(100vh_-_97px)] overflow-auto">
           {todoList.map((item: todoItem) => {
             return (
               <TodoItem key={item._id} todo={item} getAllTodos={getAllTodos} />
