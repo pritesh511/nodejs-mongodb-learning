@@ -1,17 +1,46 @@
 const http = require("http");
+const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
-    res.end("This is home page loaded");
+    fs.readFile("./html_files/index.html", (error, buffer_html) => {
+      if (error) throw error;
+      res.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+      res.write(buffer_html);
+      res.end();
+    });
   } else if (req.url == "/contact") {
-    res.end("<h1>Hello Home page</h1>");
+    fs.readFile("./html_files/contact.html", (error, buffer_html) => {
+      if (error) throw error;
+      res.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+      res.write(buffer_html);
+      res.end();
+    });
   } else if (req.url == "/about") {
-    res.end("This is about page page loaded");
+    fs.readFile("./html_files/about.html", (error, buffer_html) => {
+      if (error) throw error;
+      res.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+      res.write(buffer_html);
+      res.end();
+    });
   } else {
-    res.end("404 Error Page not found");
+    fs.readFile("./html_files/404.html", (error, buffer_html) => {
+      if (error) throw error;
+      res.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+      res.write(buffer_html);
+      res.end();
+    });
   }
 });
 
-server.listen(8000, () => {
-  console.log("Your server is running on port 8000");
+server.listen(8080, () => {
+  console.log("The server is running on port 8080");
 });
