@@ -13,6 +13,7 @@ const BlogAdmin = () => {
   });
 
   function handleProductFormInput(e: React.ChangeEvent<HTMLInputElement>) {
+    console.log("productForm", productForm);
     switch (e.target.name) {
       case "name":
         setProductForm({
@@ -57,14 +58,15 @@ const BlogAdmin = () => {
       body: JSON.stringify(productForm),
     });
     const response = await createProduct.json();
-    console.log(response);
-    setProductForm({
-      name: "",
-      description: "",
-      price: 0,
-      discount: 0,
-      image: "",
-    });
+    if (response.status == 200) {
+      setProductForm({
+        name: "",
+        description: "",
+        price: 0,
+        discount: 0,
+        image: "",
+      });
+    }
   }
 
   return (
