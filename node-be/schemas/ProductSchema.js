@@ -15,6 +15,10 @@ const productSchema = mongoose.Schema({
   discount: {
     type: Number,
   },
+  totalPrice: {
+    type: Number,
+    default: 0,
+  },
   image: {
     type: String,
     require: [true, "Please select product image"],

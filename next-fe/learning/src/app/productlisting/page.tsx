@@ -1,22 +1,25 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { API_URL, GET, productItem } from "@/constant";
 import Link from "next/link";
 
-async function getAllPoduct() {
-  try {
-    const productList = await fetch(API_URL + "/product", {
-      method: GET,
-    });
-    const list = await productList.json();
-    return list.data;
-  } catch (error) {
-    console.log(error);
+const ProductListing = () => {
+  const [productList, setProductList] = useState([]);
+  useEffect(() => {
+    getAllPoduct();
+  }, []);
+  async function getAllPoduct() {
+    try {
+      const productList = await fetch(API_URL + "/product", {
+        method: GET,
+      });
+      const list = await productList.json();
+      setProductList(list.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
-
-const ProductListing = async () => {
-  const productList = await getAllPoduct();
   return (
     <>
       <div className="py-4 text-center">

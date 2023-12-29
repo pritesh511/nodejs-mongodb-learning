@@ -17,7 +17,15 @@ exports.createProduct = async (req, res) => {
     } else if (req.body.image == "") {
       res.status(500).json({ message: "Please enter image url", status: 500 });
     } else {
-      const product = await productService.createProduct(req.body);
+      const newBody = {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        discount: req.body.discount,
+        totalPrice: req.body.price - req.body.discount,
+        image: req.body.image,
+      };
+      const product = await productService.createProduct(newBody);
       res.status(200).json({
         data: product,
         message: "Product created successfully",

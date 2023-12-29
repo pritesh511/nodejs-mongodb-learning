@@ -19,6 +19,7 @@ export interface productItem {
   price: number;
   discount: number;
   image: string;
+  totalPrice: number;
   _id: string;
   __v: 0;
 }
