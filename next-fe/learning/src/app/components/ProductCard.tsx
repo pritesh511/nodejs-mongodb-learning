@@ -27,7 +27,13 @@ const ProductCard = (props: props) => {
           {product?.description}
         </p>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Rs.{product?.price}
+          Price Rs.{product?.price}
+        </p>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Discount Rs.{product?.discount}
+        </p>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Total Rs.{product?.totalPrice}
         </p>
       </div>
     </div>

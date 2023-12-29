@@ -23,7 +23,7 @@ const Home = () => {
             href="/productlisting"
             className="p-4 rounded-lg underline bg-orange-700"
           >
-            Blog
+            Product List
           </Link>
         </li>
       </ul>
