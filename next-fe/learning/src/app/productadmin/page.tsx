@@ -84,6 +84,7 @@ const BlogAdmin = () => {
               type="text"
               id="name"
               name="name"
+              value={productForm.name}
               onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product name"
@@ -100,6 +101,7 @@ const BlogAdmin = () => {
               type="text"
               id="description"
               name="description"
+              value={productForm.description}
               onChange={handleProductFormInput}
               placeholder="Enter product description"
               className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -116,6 +118,7 @@ const BlogAdmin = () => {
               type="number"
               id="price"
               name="price"
+              value={productForm.price}
               onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product price"
@@ -132,6 +135,7 @@ const BlogAdmin = () => {
               type="number"
               id="discount"
               name="discount"
+              value={productForm.discount}
               onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product discount"
@@ -148,6 +152,7 @@ const BlogAdmin = () => {
               type="text"
               id="image"
               name="image"
+              value={productForm.image}
               onChange={handleProductFormInput}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter product image URL"
