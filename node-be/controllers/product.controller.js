@@ -45,3 +45,12 @@ exports.getAllProduct = async (_req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    await productService.deleteProduct(req.query.id);
+    res.status(200).json({ message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

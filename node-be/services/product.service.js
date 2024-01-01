@@ -7,3 +7,7 @@ exports.createProduct = async (product) => {
 exports.getAllProduct = async () => {
   return await productModal.find();
 };
+
+exports.deleteProduct = async (id) => {
+  return await productModal.findByIdAndDelete(id);
+};
