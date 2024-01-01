@@ -32,7 +32,13 @@ const ProductListing = () => {
       </div>
       <div className="grid grid-cols-4 gap-4 p-2">
         {productList?.map((item: productItem) => {
-          return <ProductCard key={item._id} product={item} />;
+          return (
+            <ProductCard
+              key={item._id}
+              product={item}
+              getAllPoduct={getAllPoduct}
+            />
+          );
         })}
       </div>
     </>
